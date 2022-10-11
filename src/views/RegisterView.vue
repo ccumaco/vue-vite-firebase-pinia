@@ -3,7 +3,7 @@
     <h1>Register</h1>
         <form action="" @submit.prevent='handleSubmit'>
             <input
-              type="email"
+              type="text"
               name="email"
               id="email"
               placeholder="email"
@@ -15,25 +15,26 @@
               id="password"
               placeholder="password"
               v-model.trim='password'
+              autocomplete
               >
-            <button type="submit">Crear usuario</button>
+            <button type="submit" :disabled='userStore.loadingUser'>Crear usuario</button>
         </form>
   </div>
 </template>
 
 <script setup>
   import { ref } from 'vue';
-import { useUserStore } from '../stores/user';
+  import { useUserStore } from '../stores/user';
   const userStore = useUserStore()
 
-  const email = ref("carlos@test.com")
-  const password = ref("123123")
+  const email = ref("carloscumaco5@gmail.com")
+  const password = ref("abc123a")
 
-  const  handleSubmit = () => {
+  const  handleSubmit = async () => {   
     if (!email.value || password.value.length < 6) {
       return console.log("llena los campos");
     }
-    userStore.registerUser(email.value, password.value)
+    await userStore.registerUser(email.value, password.value)
   }
 </script>
 
