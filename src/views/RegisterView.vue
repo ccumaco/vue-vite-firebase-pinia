@@ -29,7 +29,8 @@
 
   const email = ref("carloscumaco5@gmail.com")
   const password = ref("abc123a")
-
+ 
+  // submit form to register pinia
   const  handleSubmit = async () => {   
     if (!email.value || password.value.length < 6) {
       return console.log("llena los campos");
