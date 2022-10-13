@@ -69,6 +69,6 @@ const onFinish = async (value) => {
 };
 
 onMounted(async () => {
-    formState.url = await databaseStore.leerUrl(route.params.id);
+    formState.url = await databaseStore.readUrl(route.params.id);
 });
 </script>

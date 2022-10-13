@@ -84,7 +84,7 @@ export const useDatabaseStore = defineStore("database", {
                 this.loading = false;
             }
         },
-        async leerUrl(id) {
+        async readUrl(id) {
             try {
                 const docRef = doc(db, "urls", id);
                 const docSpan = await getDoc(docRef);
