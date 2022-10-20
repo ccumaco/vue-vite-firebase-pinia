@@ -25,13 +25,13 @@ export const useDatabaseStore = defineStore("database", {
         async getURL(id) {
             try {
                 const docRef = doc(db, "urls", id);
-                const docSpan = await getDoc(docRef);
+                const docSnap = await getDoc(docRef);
 
-                if (!docSpan.exists()) {
+                if (!docSnap.exists()) {
                     return false;
                 }
 
-                return docSpan.data().name;
+                return docSnap.data().name;
             } catch (error) {
                 console.log(error.message);
                 return false;
@@ -87,17 +87,17 @@ export const useDatabaseStore = defineStore("database", {
         async readUrl(id) {
             try {
                 const docRef = doc(db, "urls", id);
-                const docSpan = await getDoc(docRef);
+                const docSnap = await getDoc(docRef);
 
-                if (!docSpan.exists()) {
+                if (!docSnap.exists()) {
                     throw new Error("no existe el doc");
                 }
 
-                if (docSpan.data().user !== auth.currentUser.uid) {
+                if (docSnap.data().user !== auth.currentUser.uid) {
                     throw new Error("no le pertenece ese documento");
                 }
 
-                return docSpan.data().name;
+                return docSnap.data().name;
             } catch (error) {
                 console.log(error.message);
             } finally {
@@ -108,12 +108,12 @@ export const useDatabaseStore = defineStore("database", {
             try {
                 const docRef = doc(db, "urls", id);
 
-                const docSpan = await getDoc(docRef);
-                if (!docSpan.exists()) {
+                const docSnap = await getDoc(docRef);
+                if (!docSnap.exists()) {
                     throw new Error("no existe el doc");
                 }
 
-                if (docSpan.data().user !== auth.currentUser.uid) {
+                if (docSnap.data().user !== auth.currentUser.uid) {
                     throw new Error("no le pertenece ese documento");
                 }
 
@@ -137,12 +137,12 @@ export const useDatabaseStore = defineStore("database", {
             try {
                 const docRef = doc(db, "urls", id);
 
-                const docSpan = await getDoc(docRef);
-                if (!docSpan.exists()) {
+                const docSnap = await getDoc(docRef);
+                if (!docSnap.exists()) {
                     throw new Error("no existe el doc");
                 }
 
-                if (docSpan.data().user !== auth.currentUser.uid) {
+                if (docSnap.data().user !== auth.currentUser.uid) {
                     throw new Error("no le pertenece ese documento");
                 }
 

@@ -25,8 +25,8 @@ const redireccion = async (to, from, next) => {
     const databaseStore = useDatabaseStore();
     const userStore = useUserStore();
     userStore.loadingSession = true;
-    // console.log(to.params.pathMatch[0]);
     const name = await databaseStore.getURL(to.params.pathMatch[0]);
+    const user = await userStore.currentUser();
     if (!name) {
         next();
         userStore.loadingSession = false;

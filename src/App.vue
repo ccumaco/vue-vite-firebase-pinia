@@ -29,7 +29,7 @@
             </a-menu>
             <nav>| | |</nav>
         </a-layout-header>
-        <a-layout-content style="padding: 0 50px">
+        <a-layout-content>
             <div class="container">
                 <div v-if="userStore.loadingSession">loading user...</div>
                 <router-view v-else></router-view>

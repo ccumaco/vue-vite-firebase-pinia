@@ -95,6 +95,7 @@ export const useUserStore = defineStore("userStore", {
         async logoutUser() {
             const databaseStore = useDatabaseStore();
             databaseStore.$reset();
+            this.userData = null
             try {
                 router.push("/login");
                 await signOut(auth);
@@ -108,7 +109,7 @@ export const useUserStore = defineStore("userStore", {
                     auth,
                     async (user) => {
                         if (user) {
-                            console.log(user);
+                            console.log(user, "user");
                             // await this.setUser(user);
                             this.userData = {
                                 email: user.email,
